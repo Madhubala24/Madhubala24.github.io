@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Madhubala Rajadurai — Senior Blockchain Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D111C; --panel: #161C2B; --panel-2: #1D2438; --line: #2A3350;
+    --ink: #E9ECF5; --ink-dim: #9BA3BE; --ink-faint: #6B7394;
+    --accent: #D9A566; --accent-ink: #16130B; --good: #6FCF97;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #F5F3EE; --panel: #FFFFFF; --panel-2: #EDEAE2; --line: #DAD5C8;
+      --ink: #191712; --ink-dim: #58523F; --ink-faint: #8C8567;
+      --accent: #B4763A; --accent-ink: #FFFFFF; color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] { --bg:#F5F3EE; --panel:#FFFFFF; --panel-2:#EDEAE2; --line:#DAD5C8; --ink:#191712; --ink-dim:#58523F; --ink-faint:#8C8567; --accent:#B4763A; --accent-ink:#FFFFFF; color-scheme: light; }
+  :root[data-theme="dark"] { --bg:#0D111C; --panel:#161C2B; --panel-2:#1D2438; --line:#2A3350; --ink:#E9ECF5; --ink-dim:#9BA3BE; --ink-faint:#6B7394; --accent:#D9A566; --accent-ink:#16130B; color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  h1, h2, h3 { font-family: "Space Grotesk", "IBM Plex Sans", sans-serif; }
+
+  /* ---- status pill ---- */
+  .status-bar { border-bottom: 1px solid var(--line); }
+  .status-row {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+    padding: 12px 0; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-faint);
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); display: inline-block;
+    box-shadow: 0 0 0 0 rgba(111,207,151,.5); animation: pulse 2.2s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(111,207,151,.45)} 70%{box-shadow:0 0 0 6px rgba(111,207,151,0)} 100%{box-shadow:0 0 0 0 rgba(111,207,151,0)} }
+  .status-row b { color: var(--ink-dim); font-weight: 500; }
+
+  /* ---- Hero ---- */
+  header.hero { padding: 56px 0 56px; border-bottom: 1px solid var(--line); }
+  h1.name { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; max-width: 14ch; }
+  .role { margin-top: 14px; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--ink-dim); max-width: 50ch; }
+  .role b { color: var(--ink); font-weight: 600; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 7px 14px;
+  }
+  .contact-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; font-size: 13.5px; }
+  .copy-chip {
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 5px;
+    padding: 9px 14px; font-family: "IBM Plex Mono", monospace; font-size: 13px;
+    color: var(--ink-dim); transition: border-color .15s ease, color .15s ease;
+  }
+  .copy-chip:hover, .copy-chip:focus-visible { border-color: var(--accent); color: var(--ink); }
+  .copy-chip .ico { opacity: .55; font-size: 12px; }
+  .copy-chip.linkedin { text-decoration: none; }
+  .copy-chip.copied { border-color: var(--good); color: var(--good); }
+
+  /* ---- Section shell ---- */
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+  .section-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); }
+  .section-head h2 { font-size: 1.4rem; font-weight: 600; }
+
+  .about-body { max-width: 68ch; color: var(--ink-dim); font-size: 1.02rem; }
+  .about-body b { color: var(--ink); font-weight: 600; }
+
+  /* ---- Terminal ---- */
+  .terminal {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+    font-family: "IBM Plex Mono", monospace; font-size: 13.5px;
+  }
+  .term-head { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  .term-head span { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+  .term-head .lbl { margin-left: 8px; color: var(--ink-faint); font-size: 12px; }
+  .term-body { padding: 16px; height: 260px; overflow-y: auto; }
+  .term-line { margin-bottom: 6px; white-space: pre-wrap; word-break: break-word; }
+  .term-line.cmd { color: var(--ink); }
+  .term-line.cmd::before { content: "› "; color: var(--accent); }
+  .term-line.out { color: var(--ink-dim); }
+  .term-input-row { display: flex; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line); }
+  .term-input-row .prompt { color: var(--accent); margin-right: 8px; }
+  .term-input-row input {
+    flex: 1; background: transparent; border: none; outline: none; color: var(--ink);
+    font-family: inherit; font-size: 13.5px;
+  }
+  .term-hint { margin-top: 10px; font-size: 12px; color: var(--ink-faint); }
+
+  /* ---- Skills ---- */
+  .skill-group { margin-bottom: 20px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group .g-label { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-faint); margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    position: relative; font-size: 13px; padding: 6px 12px; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 3px; color: var(--ink-dim); cursor: default;
+  }
+  .chip::after {
+    content: attr(data-used); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%) translateY(4px);
+    background: var(--panel-2); border: 1px solid var(--line); color: var(--ink); font-family: "IBM Plex Mono", monospace;
+    font-size: 11px; white-space: nowrap; padding: 6px 10px; border-radius: 4px; opacity: 0; pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease; z-index: 5;
+  }
+  .chip:hover, .chip:focus-visible { border-color: var(--accent); color: var(--ink); }
+  .chip:hover::after, .chip:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---- Timeline ---- */
+  .tl { position: relative; padding-left: 26px; }
+  .tl::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
+  .tl-item { position: relative; padding-bottom: 26px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before { content: ""; position: absolute; left: -26px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+  .tl-btn { all: unset; cursor: pointer; display: block; width: 100%; }
+  .tl-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+  .tl-role { font-weight: 600; font-size: 1.02rem; }
+  .tl-role span { color: var(--accent); font-weight: 500; }
+  .tl-dates { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+  .chev { display: inline-block; transition: transform .2s ease; color: var(--ink-faint); }
+  .tl-item.open .chev { transform: rotate(90deg); }
+  .tl-desc { color: var(--ink-dim); font-size: 0.95rem; margin-top: 6px; }
+  .tl-detail {
+    display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease;
+  }
+  .tl-item.open .tl-detail { grid-template-rows: 1fr; }
+  .tl-detail-inner { overflow: hidden; }
+  .tl-detail ul { margin: 10px 0 0 18px; color: var(--ink-dim); font-size: 0.92rem; }
+  .tl-detail li { margin-bottom: 6px; }
+  .tl-tech { margin-top: 10px; font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-faint); }
+
+  /* ---- Projects ---- */
+  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .proj { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 22px; }
+  .proj .p-tag { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--accent); margin-bottom: 10px; }
+  .proj h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+  .proj p { color: var(--ink-dim); font-size: 0.92rem; }
+
+  /* ---- Gas playground ---- */
+  .playground { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 22px; }
+  .pg-note { font-size: 12px; color: var(--ink-faint); margin-bottom: 16px; }
+  .pg-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+  .pg-btns button {
+    font-family: "IBM Plex Mono", monospace; font-size: 13px; padding: 9px 16px; border-radius: 4px;
+    background: var(--panel-2); border: 1px solid var(--line); color: var(--ink-dim); cursor: pointer;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .pg-btns button:hover, .pg-btns button.active { border-color: var(--accent); color: var(--ink); }
+  .pg-result { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--ink-dim); min-height: 44px; }
+  .pg-result b { color: var(--accent); font-size: 1.1rem; }
+
+  /* ---- Footer ---- */
+  footer { padding: 60px 0 90px; }
+  .cta-line { font-size: clamp(1.3rem, 3.2vw, 1.9rem); font-family: "Space Grotesk", sans-serif; font-weight: 600; max-width: 22ch; margin-bottom: 24px; }
+  .cta-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cta-links a { text-decoration: none; font-size: 14px; padding: 12px 20px; border: 1px solid var(--line); border-radius: 3px; transition: background .15s ease, border-color .15s ease; }
+  .cta-links a.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .cta-links a:not(.primary):hover { border-color: var(--accent); color: var(--accent); }
+  .edu-line { margin-top: 36px; font-size: 13px; color: var(--ink-faint); font-family: "IBM Plex Mono", monospace; }
+
+  @media (max-width: 640px) {
+    .projects { grid-template-columns: 1fr; }
+    header.hero { padding: 44px 0 44px; }
+    .tl-dates { font-size: 11.5px; }
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .dot { animation: none; } }
+</style>
+</head>
+<body>
+
+  <div class="status-bar">
+    <div class="wrap">
+      <div class="status-row">
+        <span class="dot"></span>
+        <span>available for new roles</span>
+        <span>·</span>
+        <b>4.5 yrs in Web3</b>
+        <span>·</span>
+        <span id="localtime">—</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="name">Madhubala Rajadurai</h1>
+      <p class="role">Building <b>secure, upgradeable</b> smart contracts and full-stack Web3 products — from NFT fractionalization to stablecoin payment rails.</p>
+      <div class="badge">◆ open to mid / senior / lead blockchain developer roles</div>
+      <div class="contact-row">
+        <span class="copy-chip" id="emailChip" tabindex="0" role="button">mb771966@gmail.com <span class="ico">⧉</span></span>
+        <span class="copy-chip" id="phoneChip" tabindex="0" role="button">+91 6379357925 <span class="ico">⧉</span></span>
+        <a class="copy-chip linkedin" href="https://www.linkedin.com/in/madhubala-r-680239201" target="_blank" rel="noopener">linkedin.com/in/madhubala-r-680239201 <span class="ico">↗</span></a>
+        <a class="copy-chip linkedin" href="https://github.com/Madhubala24" target="_blank" rel="noopener">github.com/Madhubala24 <span class="ico">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section id="about">
+      <div class="section-head"><span class="section-num mono">01</span><h2>About</h2></div>
+      <p class="about-body">I design and ship decentralized applications end to end — <b>Solidity contracts, upgradeable architectures, and the React/Node interfaces around them.</b> My recent work spans fractional NFT ownership, a private PoSA-based chain with its own stablecoin peg, and a Hedera Hashgraph payment system used by real merchants. I care most about the parts that make blockchain products trustworthy: gas efficiency, clean transaction lifecycles, and contracts that are actually safe to upgrade.</p>
+    </section>
+
+    <section id="terminal">
+      <div class="section-head"><span class="section-num mono">02</span><h2>Ask the terminal</h2></div>
+      <div class="terminal">
+        <div class="term-head"><span></span><span></span><span></span><span class="lbl">madhu@portfolio — zsh</span></div>
+        <div class="term-body" id="termBody">
+          <div class="term-line out">Type a command to explore. Try: help, about, skills, experience, projects, contact</div>
+        </div>
+        <div class="term-input-row">
+          <span class="prompt">›</span>
+          <input id="termInput" type="text" autocomplete="off" spellcheck="false" placeholder="type 'help' and press enter">
+        </div>
+      </div>
+      <div class="term-hint">A tiny CLI, because a static page felt like the wrong medium for a blockchain dev's portfolio.</div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num mono">03</span><h2>Stack</h2></div>
+      <div class="skill-group">
+        <div class="g-label">CONTRACTS &amp; STANDARDS</div>
+        <div class="chips">
+          <span class="chip" data-used="Used in: NFT Marketplace">Solidity</span>
+          <span class="chip" data-used="Used in: NFT Marketplace, Ticketing">ERC-20 / 721 / 1155</span>
+          <span class="chip" data-used="Used in: Private BSC Ecosystem">BEP standards</span>
+          <span class="chip" data-used="Used in: NFT Marketplace">OpenZeppelin UUPS</span>
+          <span class="chip" data-used="Used in: Shaeryl DataTech stack">Hardhat</span>
+          <span class="chip" data-used="Used in: earlier Boson Labs work">Truffle</span>
+          <span class="chip" data-used="Used in: NFT Marketplace">Ethers.js v6</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-label">NETWORKS &amp; INFRASTRUCTURE</div>
+        <div class="chips">
+          <span class="chip" data-used="Used in: Stablecoin Payment System">Hedera Hashgraph SDK</span>
+          <span class="chip" data-used="Used in: Private Blockchain Ecosystem">Private BSC Fork</span>
+          <span class="chip" data-used="Used in: Private Blockchain Ecosystem">PoSA Consensus</span>
+          <span class="chip" data-used="Used across all contract work">RPC Integration</span>
+          <span class="chip" data-used="Used across all contract work">Gas Optimization</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-label">PRODUCT &amp; INTEGRATIONS</div>
+        <div class="chips">
+          <span class="chip" data-used="Used in: NFT Marketplace">MoonPay</span>
+          <span class="chip" data-used="Used in: NFT Marketplace">ThirdWeb</span>
+          <span class="chip" data-used="Used in: Ticketing platform">MetaMask</span>
+          <span class="chip" data-used="Used in: DeFi (Aptos) platform">WalletConnect</span>
+          <span class="chip" data-used="Used in: NFT Document Management">IPFS</span>
+          <span class="chip" data-used="Used across most frontends">React.js</span>
+          <span class="chip" data-used="Used in: Stablecoin Payment System">Node.js / Express</span>
+          <span class="chip" data-used="Used in: Stablecoin Payment System">MongoDB</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head"><span class="section-num mono">04</span><h2>Experience</h2></div>
+      <p class="pg-note" style="margin-bottom:18px;">Click a role to expand it.</p>
+      <div class="tl" id="timeline"></div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head"><span class="section-num mono">05</span><h2>Selected work</h2></div>
+      <div class="projects">
+        <div class="proj"><div class="p-tag">ERC-1155 · UUPS</div><h3>NFT Fractionalization Platform</h3><p>Vault contracts and ERC-20 fraction tokens letting a single NFT be co-owned and traded, with royalty enforcement and transfer-rule governance.</p></div>
+        <div class="proj"><div class="p-tag">PoSA · Private Chain</div><h3>Private BSC Ecosystem</h3><p>A validator network on a forked BSC with a mint/burn USD-pegged token and lease NFTs (BEP-721/1155) tied to real booking APIs.</p></div>
+        <div class="proj"><div class="p-tag">Hedera Hashgraph</div><h3>Stablecoin Payment System</h3><p>JWT-authenticated Node.js APIs for minting, burning, and P2P transfers, with QR-based merchant dashboards and live transaction tracking.</p></div>
+        <div class="proj"><div class="p-tag">ERC-721 · MetaMask</div><h3>NFT-Based Ticketing</h3><p>Each ticket minted as a transfer-restricted NFT, with QR entry validation and an admin dashboard for fraud checks and sales analytics.</p></div>
+      </div>
+    </section>
+
+    <section id="playground">
+      <div class="section-head"><span class="section-num mono">06</span><h2>Gas estimate playground</h2></div>
+      <div class="playground">
+        <div class="pg-note">Illustrative ballpark figures for common EVM operations — not a live oracle.</div>
+        <div class="pg-btns" id="pgBtns">
+          <button data-op="mint">Mint NFT (ERC-721)</button>
+          <button data-op="transfer">Token Transfer</button>
+          <button data-op="swap">DEX Swap</button>
+          <button data-op="deploy">Deploy Upgradeable Proxy</button>
+        </div>
+        <div class="pg-result" id="pgResult">Pick an operation to see a typical gas-unit range.</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="cta-line">Open to Mid / Senior / Lead Blockchain Developer roles.</div>
+      <div class="cta-links">
+        <a class="primary" href="mailto:mb771966@gmail.com">Email me</a>
+        <a href="tel:+916379357925">Call</a>
+        <a href="https://www.linkedin.com/in/madhubala-r-680239201" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/Madhubala24" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="edu-line">B.E., Computer Science — CGPA 8.1 (2022)</div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  function fmtTime(){
+    var el = document.getElementById('localtime');
+    if(el) el.textContent = new Date().toLocaleString(undefined, { hour:'2-digit', minute:'2-digit', day:'2-digit', month:'short' });
+  }
+  fmtTime();
+  setInterval(fmtTime, 30000);
+
+  // copy chips
+  function wireCopy(id, value){
+    var el = document.getElementById(id);
+    if(!el) return;
+    function doCopy(){
+      var full = el.dataset.orig || el.textContent.replace('⧉','').trim();
+      el.dataset.orig = full;
+      navigator.clipboard && navigator.clipboard.writeText(value).catch(function(){});
+      el.classList.add('copied');
+      el.querySelector('.ico').textContent = '✓';
+      setTimeout(function(){ el.classList.remove('copied'); el.querySelector('.ico').textContent = '⧉'; }, 1400);
+    }
+    el.addEventListener('click', doCopy);
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); doCopy(); } });
+  }
+  wireCopy('emailChip', 'mb771966@gmail.com');
+  wireCopy('phoneChip', '+91 6379357925');
+
+  // timeline data + render
+  var roles = [
+    { role:'Senior Blockchain Developer', org:'Shaeryl DataTech', dates:'Feb 2025 – Mar 2026',
+      summary:'Fractional NFT marketplace, private PoSA chain, Hedera merchant payments.',
+      bullets:[
+        'Migrated stack from Truffle to Hardhat with Ethers.js v6; architected fractional NFT ownership using ERC-1155 with UUPS upgradeable patterns',
+        'Built a private BSC fork with PoSA consensus, a mint/burn USD-pegged token, and validator network infrastructure',
+        'Built a stablecoin payment system on Hedera with JWT auth, P2P transfers, and QR-based merchant dashboards'
+      ], tech:'Solidity ^0.8.30 · Hardhat · Ethers.js v6 · OpenZeppelin · Hedera SDK · MoonPay · ThirdWeb · Node.js · MongoDB' },
+    { role:'Blockchain Developer', org:'WINNGOO Consultancy', dates:'Sep 2024 – Jan 2025',
+      summary:'Custom cryptocurrency with automated mining and wallet integration.',
+      bullets:[
+        'Developed a custom cryptocurrency with automated mining and smart contract-based coin distribution to user wallets',
+        'Built a React.js frontend with wallet integration; deployed on Ethereum testnet with security validation'
+      ], tech:'Solidity · React.js · Web3.js · Testnet Deployment' },
+    { role:'Blockchain Developer', org:'Thiran Technologies', dates:'Aug 2023 – Jul 2024',
+      summary:'ERC-721 ticketing platform with QR validation and fraud checks.',
+      bullets:[
+        'Designed a ticketing platform minting each ticket as an ERC-721 NFT with transfer restrictions and ownership verification',
+        'Integrated MetaMask auth and QR code generation for automated entry validation',
+        'Automated KPI dashboards and email approval workflows with Power Automate, cutting manual processing 60%'
+      ], tech:'Solidity · ERC-721 · React.js · MetaMask · Power Automate' },
+    { role:'Blockchain Developer, Full Stack', org:'Boson Labs', dates:'Mar 2022 – Aug 2023',
+      summary:'Aptos DeFi suite — pools, swaps, staking — plus an IPFS document system.',
+      bullets:[
+        'Led React.js development for Pool, Swap, and Staking modules on Aptos, with multi-wallet provider integration',
+        'Built an NFT document management system with private IPFS storage and cryptographic access control',
+        'Developed and deployed Solidity smart contracts for DeFi liquidity pools, swaps, and rewards'
+      ], tech:'React.js · Solidity · Aptos · Python · IPFS' },
+    { role:'Blockchain Developer, Intern', org:'Boson Labs', dates:'Dec 2020 – Dec 2021',
+      summary:'Core DeFi liquidity, swap, and staking mechanics.',
+      bullets:[
+        'Contributed to DeFi liquidity pool features for token deposits and withdrawals',
+        'Supported swap and staking mechanism implementation; participated in code reviews and testing'
+      ], tech:'React.js · Solidity · Web3.js' }
+  ];
+  var tlEl = document.getElementById('timeline');
+  roles.forEach(function(r, i){
+    var item = document.createElement('div');
+    item.className = 'tl-item';
+    item.innerHTML =
+      '<button class="tl-btn" aria-expanded="false">' +
+        '<div class="tl-top">' +
+          '<div class="tl-role">' + r.role + ' <span>— ' + r.org + '</span></div>' +
+          '<div class="tl-dates">' + r.dates + ' <span class="chev">›</span></div>' +
+        '</div>' +
+        '<div class="tl-desc">' + r.summary + '</div>' +
+      '</button>' +
+      '<div class="tl-detail"><div class="tl-detail-inner">' +
+        '<ul>' + r.bullets.map(function(b){ return '<li>' + b + '</li>'; }).join('') + '</ul>' +
+        '<div class="tl-tech">' + r.tech + '</div>' +
+      '</div></div>';
+    var btn = item.querySelector('.tl-btn');
+    btn.addEventListener('click', function(){
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    tlEl.appendChild(item);
+    if(i === 0){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+
+  // terminal
+  var body = document.getElementById('termBody');
+  var input = document.getElementById('termInput');
+  var answers = {
+    help: "Commands: about, skills, experience, projects, contact, clear",
+    about: "Senior Blockchain Developer, 4+ yrs. Solidity, EVM + Hedera + Aptos, upgradeable contracts, DeFi & NFT platforms.",
+    skills: "Solidity, Hardhat, Ethers.js v6, OpenZeppelin/UUPS, Hedera SDK, React.js, Node.js, MongoDB, IPFS, MetaMask.",
+    experience: "Shaeryl DataTech (Feb 2025–Mar 2026) · WINNGOO (2024–25) · Thiran Technologies (2023–24) · Boson Labs (2022–23, and intern 2020–21).",
+    projects: "NFT fractionalization marketplace · Private PoSA BSC chain · Hedera stablecoin payments · ERC-721 ticketing.",
+    contact: "mb771966@gmail.com · +91 6379357925 · linkedin.com/in/madhubala-r-680239201 · github.com/Madhubala24"
+  };
+  function printLine(text, cls){
+    var d = document.createElement('div');
+    d.className = 'term-line ' + cls;
+    d.textContent = text;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+  }
+  function runCmd(raw){
+    var cmd = raw.trim().toLowerCase();
+    printLine(raw, 'cmd');
+    if(!cmd) return;
+    if(cmd === 'clear'){ body.innerHTML = ''; return; }
+    if(answers[cmd]){ printLine(answers[cmd], 'out'); return; }
+    printLine("command not found: '" + cmd + "' — try 'help'", 'out');
+  }
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && input.value.trim() !== ''){
+      runCmd(input.value);
+      input.value = '';
+    }
+  });
+
+  // gas playground
+  var pgData = {
+    mint:    { label: 'Mint NFT (ERC-721)', low: 80000,  high: 150000 },
+    transfer:{ label: 'Token Transfer',      low: 21000,  high: 65000  },
+    swap:    { label: 'DEX Swap',            low: 120000, high: 250000 },
+    deploy:  { label: 'Deploy Upgradeable Proxy', low: 900000, high: 1600000 }
+  };
+  var pgBtns = document.getElementById('pgBtns');
+  var pgResult = document.getElementById('pgResult');
+  pgBtns.addEventListener('click', function(e){
+    var btn = e.target.closest('button');
+    if(!btn) return;
+    Array.from(pgBtns.children).forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var d = pgData[btn.dataset.op];
+    pgResult.innerHTML = d.label + ' typically runs <b>' + d.low.toLocaleString() + '–' + d.high.toLocaleString() + ' gas units</b>, before network multiplier and priority fee.';
+  });
+})();
+</script>
+
+</body>
+</html>
