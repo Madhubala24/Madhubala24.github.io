@@ -423,6 +423,10 @@
     printLine(raw, 'cmd');
     if(!cmd) return;
     if(cmd === 'clear'){ body.innerHTML = ''; return; }
+    if(cmd === 'hi' || cmd === 'hello' || cmd === 'hey' || cmd === 'vanakkam'){
+      printLine("Hi! 👋 Welcome to Madhu's portfolio. I'm Madhubala, a Blockchain Developer with 4+ years of Web3 experience. Want to know more about me? Try 'about', 'skills', 'experience', 'projects', or 'contact'.", 'out');
+      return;
+    }
     if(answers[cmd]){ printLine(answers[cmd], 'out'); return; }
     printLine("command not found: '" + cmd + "' — try 'help'", 'out');
   }
